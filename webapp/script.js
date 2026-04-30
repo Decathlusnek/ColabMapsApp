@@ -48,8 +48,8 @@
 
         document.getElementById('resolveBulkBtn').addEventListener('click', () => {
             const addressesInput = document.getElementById('bulkAddressInput').value;
-            const addresses = addressesInput.split(/[
-;]/).map(addr => addr.trim()).filter(addr => addr !== '');
+            const addresses = addressesInput.split(/
+|;/).map(addr => addr.trim()).filter(addr => addr !== '');
             if (addresses.length === 0) {
                 alert('Please enter at least one address.');
                 return;
