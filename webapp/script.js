@@ -3,12 +3,12 @@
     // and initialized by initMap which is also defined in index.html
 
     // Helper functions (addMarker, clearMarkers) remain in script.js
-    function addMarker(location, title, animation = google.maps.Animation.DROP) {
+    function addMarker(location, title, animation) {
         const marker = new google.maps.Marker({
             map: map, // Use the global map
             position: location,
             title: title,
-            animation: animation,
+            animation: animation || google.maps.Animation.DROP, // Apply default inside the function
         });
         markers.push(marker); // Use the global markers array
         return marker;
