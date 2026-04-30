@@ -42,7 +42,7 @@
                     }
                 );
             } else {
-                alert("Error: Your browser doesn't support Geolocation.");
+                alert('Error: Your browser does not support Geolocation.');
             }
         });
 
