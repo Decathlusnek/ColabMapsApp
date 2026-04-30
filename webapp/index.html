@@ -4,12 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ColabMapsApp</title>
+    <title>ColabMapsApp - Map Integration</title>
     <link rel="stylesheet" href="style.css">
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQQqpwdIgeck9NPJ-o-8dLdsBhI2cXRPE&callback=initMap"></script>
 </head>
 <body>
-    <h1>Welcome to ColabMapsApp!</h1>
-    <p>This is your starting point.</p>
+    <h1>ColabMapsApp - Google Maps</h1>
+    <div id="map"></div>
+    <div class="controls">
+        <button id="currentLocationBtn">Get Current Location</button>
+        <br>
+        <textarea id="bulkAddressInput" placeholder="Enter addresses (one per line or separated by semicolons)"></textarea>
+        <button id="resolveBulkBtn">Resolve Bulk Addresses</button>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
