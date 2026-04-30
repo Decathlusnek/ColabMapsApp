@@ -6,6 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ColabMapsApp - Map Integration</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Define global variables and initMap function first -->
+    <script>
+        let map;
+        let geocoder;
+        let markers = []; // Moved here for global access if needed by initMap
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: 34.0522, lng: -118.2437 },
+                zoom: 10,
+            });
+            geocoder = new google.maps.Geocoder();
+            console.log('Google Map initialized.');
+            // Dispatch a custom event to notify script.js that map is ready
+            document.dispatchEvent(new CustomEvent('mapinit'));
+        }
+    </script>
+    <!-- Load Google Maps API script. It will call initMap when ready. -->
     <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQQqpwdIgeck9NPJ-o-8dLdsBhI2cXRPE&callback=initMap"></script>
 </head>
 <body>
@@ -17,6 +35,7 @@
         <textarea id="bulkAddressInput" placeholder="Enter addresses (one per line or separated by semicolons)"></textarea>
         <button id="resolveBulkBtn">Resolve Bulk Addresses</button>
     </div>
-    <script src="script.js"></script>
+    <!-- Load our application specific script with defer to ensure DOM is ready -->
+    <script src="script.js" defer></script>
 </body>
 </html>
