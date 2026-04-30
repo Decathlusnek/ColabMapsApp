@@ -1,0 +1,21 @@
+
+# Python
+__pycache__/
+*.pyc
+*.log
+
+# Virtual environment
+virtualenv/
+.venv/
+env/
+
+# Docker
+.dockerignore
+
+# Firebase
+.firebase/
+firebase-debug.log
+
+# OS generated files
+.DS_Store
+.ipynb_checkpoints/

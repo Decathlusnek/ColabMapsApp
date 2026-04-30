@@ -1,0 +1,11 @@
+
+version: '3.8'
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: configs/Dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend:/app/backend # Mount for live code changes
