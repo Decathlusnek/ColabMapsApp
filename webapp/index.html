@@ -4,13 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ColabMapsApp - Map Integration</title>
+    <title>ColabMapsApp - Advanced Map Integration</title>
     <link rel="stylesheet" href="style.css">
     <!-- Define global variables and initMap function first -->
     <script>
         let map;
         let geocoder;
-        let markers = []; // Moved here for global access if needed by initMap
+        let directionsService;
+        let directionsRenderer;
+        let markers = []; // All markers go here
+        let currentLocationMarkerId = null; // To track the current location marker's ID
+        let nextMarkerId = 0; // Simple ID generator for markers
 
         function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
@@ -18,7 +22,10 @@
                 zoom: 10,
             });
             geocoder = new google.maps.Geocoder();
-            console.log('Google Map initialized.');
+            directionsService = new google.maps.DirectionsService();
+            directionsRenderer = new google.maps.DirectionsRenderer();
+            directionsRenderer.setMap(map);
+            console.log('Google Map and Services initialized.');
             // Dispatch a custom event to notify script.js that map is ready
             document.dispatchEvent(new CustomEvent('mapinit'));
         }
@@ -30,10 +37,31 @@
     <h1>ColabMapsApp - Google Maps</h1>
     <div id="map"></div>
     <div class="controls">
-        <button id="currentLocationBtn">Get Current Location</button>
+        <h2>Route Planning</h2>
+        <label for="originAddress">Origin Address (Required):</label>
+        <input type="text" id="originAddress" placeholder="Enter origin address">
+        <button id="currentLocationBtn">Use Current Location</button>
         <br>
+        <label for="destinationAddress">Destination Address (Optional):</label>
+        <input type="text" id="destinationAddress" placeholder="Enter destination address">
+        <br>
+        <div class="avoidance-options">
+            <input type="checkbox" id="avoidHighways"> <label for="avoidHighways">Avoid Highways</label>
+            <input type="checkbox" id="avoidTolls"> <label for="avoidTolls">Avoid Tolls</label>
+            <input type="checkbox" id="avoidFerries"> <label for="avoidFerries">Avoid Ferries</label>
+        </div>
+        <button id="getDirectionsBtn">Get Directions</button>
+
+        <hr>
+
+        <h2>Bulk Address Resolution</h2>
         <textarea id="bulkAddressInput" placeholder="Enter addresses (one per line or separated by semicolons)"></textarea>
         <button id="resolveBulkBtn">Resolve Bulk Addresses</button>
+        <br>
+        <label for="resolvedAddressesOutput">Resolved Bulk Addresses:</label>
+        <textarea id="resolvedAddressesOutput" readonly placeholder="Resolved addresses will appear here..."></textarea>
+
+        <div id="directionsPanel"></div>
     </div>
     <!-- Load our application specific script with defer to ensure DOM is ready -->
     <script src="script.js" defer></script>

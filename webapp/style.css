@@ -7,9 +7,11 @@ body {
     color: #333;
 }
 
-h1 {
+h1,
+h2 {
     color: #0056b3;
     text-align: center;
+    margin-bottom: 20px;
 }
 
 #map {
@@ -27,6 +29,28 @@ h1 {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
+label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+textarea {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    min-height: 40px;
+    resize: vertical;
+}
+
+textarea#resolvedAddressesOutput {
+    min-height: 80px;
+}
+
 button {
     background-color: #007bff;
     color: white;
@@ -42,12 +66,33 @@ button:hover {
     background-color: #0056b3;
 }
 
-textarea {
-    width: calc(100% - 22px);
-    padding: 10px;
+.avoidance-options {
     margin-top: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    min-height: 80px;
-    resize: vertical;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.avoidance-options label {
+    display: inline-block;
+    margin: 0;
+    font-weight: normal;
+}
+
+.avoidance-options input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin: 30px 0;
+}
+
+#directionsPanel {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    background-color: #f9f9f9;
 }
