@@ -42,7 +42,7 @@
                     }
                 );
             } else {
-                alert('Error: Your browser doesn't support Geolocation.');
+                alert("Error: Your browser doesn't support Geolocation.");
             }
         });
 
@@ -77,9 +77,9 @@
                     if (geocodeCount === addresses.length) {
                         if (successfulGeocodes > 0) {
                             map.fitBounds(bounds); // Zoom to fit all markers
-                        } else {
-                            alert('No addresses could be resolved.');
                         }
+                    } else {
+                        alert('No addresses could be resolved.');
                     }
                 });
             });
