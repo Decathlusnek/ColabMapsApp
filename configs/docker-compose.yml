@@ -5,6 +5,8 @@ services:
     build:
       context: .
       dockerfile: configs/Dockerfile
+    environment:
+      - GOOGLE_CLOUD_PROJECT=colab-maps-v2
     ports:
       - "5000:5000"
     volumes:
