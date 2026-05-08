@@ -198,13 +198,11 @@
                         const formattedAddress = results[0].formatted_address; // Use formatted address for completeness
                         addMarker(location, formattedAddress, 'bulkAddress');
                         bounds.extend(location);
-                        resolvedAddressesOutput.value += formattedAddress + '
-'; // Append to output
+                        resolvedAddressesOutput.value += formattedAddress + '\n'; // Append to output
                         console.log(`Address resolved: ${address} -> ${formattedAddress}`, location);
                     } else {
                         console.error(`Geocode failed for address: ${address} - Status: ${status}`);
-                        resolvedAddressesOutput.value += `Failed to resolve: ${address} (Status: ${status})
-`;
+                        resolvedAddressesOutput.value += `Failed to resolve: ${address} (Status: ${status})\n`;
                     }
 
                     if (geocodeCount === addresses.length) {
